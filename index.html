@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <title>DEJTH</title>
     <meta name="description"
@@ -32,10 +32,6 @@
             scroll-snap-type: y mandatory;
             height: 100vh;
             color: white;
-            background-image: url("assets/dejth.webp");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
         section {
@@ -63,14 +59,14 @@
 
         #title h1 {
             font-size: 22vw;
+            color: transparent;
             background-image: url("assets/dejth.webp");
             background-size: cover;
-            background-clip: text;
-            background-attachment: fixed;
             background-position: center;
-            color: transparent;
+            background-clip: text;
             -webkit-background-clip: text;
             margin: 0;
+            position: relative;
         }
 
         .scroll-icon {
@@ -80,6 +76,15 @@
             font-size: 1rem;
             color: white;
         }
+
+        @media (max-width: 400px) {
+            .scroll-icon {
+                bottom: 80px;
+            }
+
+        }
+
+
 
         @keyframes bounce {
 
@@ -99,13 +104,12 @@
 
         #me .text {
             max-width: 600px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            margin: 40px;
+            padding: 20px;
             position: absolute;
-            bottom: 10px;
+            bottom: 40px;
         }
 
         .content {
@@ -122,6 +126,7 @@
             text-decoration: none;
         }
 
+
         .typewriter {
             overflow: hidden;
             border-right: .2em solid white;
@@ -130,6 +135,7 @@
             display: inline-block;
             animation: typing 3.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
         }
+
 
         @keyframes typing {
             from {
@@ -152,11 +158,22 @@
                 border-color: white;
             }
         }
+
+        .background-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
     </style>
     <title>DEJTH</title>
 </head>
 
 <body>
+    <img src="assets/dejth.webp" alt="Background" class="background-img">
     <section id="title">
         <h1>HELLO, WORLD;</h1>
         <div class="scroll-icon">↓</div>
@@ -165,9 +182,11 @@
     <section id="me">
         <div class="text">
             <div class="name">
-                <h2 class="typewriter">Hi, I am Theeradej Thisthasa</h2>
+                <h2 class="typewriter">Hi, I am Dej</h2>
             </div>
-            <p>I am a software developer with 10 years of tech-stackerience, currently the CTO at Peter Vision Co.,
+            <p>I am <b>Theeradej Thisthasa</b>, a software developer with 10 years of tech-stackerience, currently the
+                CTO at
+                Peter Vision Co.,
                 Ltd.,
                 Thailand. I'm passionate about coding and developing software that solves real-world problems. I thrive
                 on tackling complex challenges and delivering innovative solutions.</p>
@@ -267,6 +286,10 @@
     </section>
 
     <script>
+        if (!(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream)) {
+            const titleHeading = document.querySelector("#title h1");
+            titleHeading.style.backgroundAttachment = "fixed";
+        }
         document.addEventListener("scroll", function () {
             const meSection = document.getElementById("me");
             const typewriterText = document.querySelector(".typewriter");
@@ -278,6 +301,7 @@
                 typewriterText.classList.add("typewriter");
             }
         });
+
     </script>
 
 </body>
